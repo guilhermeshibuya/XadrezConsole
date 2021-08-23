@@ -4,19 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tabuleiro
+namespace xadrez_console.Tabuleiro
 {
-    class Tabuleiro
+    class TabuleiroXadrez
     {
         public int Linhas { get; set; }
         public int Colunas { get; set; }
         private Peca[,] _pecas;
 
-        public Tabuleiro(int linhas, int colunas)
+        public TabuleiroXadrez(int linhas, int colunas)
         {
             Linhas = linhas;
             Colunas = colunas;
             _pecas = new Peca[linhas, colunas];
+        }
+
+        public Peca Peca(int linha, int coluna)
+        {
+            return _pecas[linha, coluna];
         }
     }
 }
