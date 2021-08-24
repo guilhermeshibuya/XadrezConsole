@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tabuleiro
 {
@@ -42,6 +39,17 @@ namespace Tabuleiro
 
             _pecas[pos.Linha, pos.Coluna] = p;
             p.Posicao = pos;
+        }
+
+        public Peca RetirarPeca(Posicao pos)
+        {
+            if (Peca(pos) == null)
+                return null;
+
+            Peca aux = Peca(pos);
+            aux.Posicao = null;
+            _pecas[pos.Linha, pos.Coluna] = null;
+            return aux;
         }
 
         public bool PosicaoValida(Posicao pos)
