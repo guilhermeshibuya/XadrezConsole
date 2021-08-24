@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace xadrez_console.Tabuleiro
+namespace Tabuleiro
 {
     class Peca
     {
@@ -13,9 +13,9 @@ namespace xadrez_console.Tabuleiro
         public int QtdMovimentos { get; protected set; }
         public TabuleiroXadrez Tab { get; protected set; }
 
-        public Peca(Posicao posicao, TabuleiroXadrez tab, Cor cor)
+        public Peca(TabuleiroXadrez tab, Cor cor)
         {
-            Posicao = posicao;
+            Posicao = null;
             Tab = tab;
             Cor = cor;
             QtdMovimentos = 0;
