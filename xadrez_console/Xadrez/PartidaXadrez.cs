@@ -7,15 +7,15 @@ namespace Xadrez
     class PartidaXadrez
     {
         public TabuleiroXadrez Tab { get; private set; }
-        private int _turno;
-        private Cor _jogadorAtual;
+        public int Turno { get; private set; }
+        public Cor JogadorAtual { get; private set; }
         public bool Terminada { get; private set; }
 
         public PartidaXadrez()
         {
             Tab = new TabuleiroXadrez(8, 8);
-            _turno = 1;
-            _jogadorAtual = Cor.Branco;
+            Turno = 1;
+            JogadorAtual = Cor.Branco;
             Terminada = false;
             ColocarPecas();
         }
@@ -27,6 +27,45 @@ namespace Xadrez
             Peca pecaCapturada = Tab.RetirarPeca(destino);
             Tab.ColocarPeca(p, destino);
 
+        }
+
+        public void RealizaJogada(Posicao origem, Posicao destino)
+        {
+            MovimentarPeca(origem, destino);
+            Turno++;
+            MudaJogador();
+        }
+
+        public void ValidarPosicaoOrigem(Posicao pos)
+        {
+            if (Tab.Peca(pos) == null)
+            {
+                throw new TabuleiroException("Não exuste peça na posição de origem escolhida!");
+            }
+            if (JogadorAtual != Tab.Peca(pos).Cor)
+            {
+                throw new TabuleiroException("A peça escolhida não é sua!");
+            }
+            if (!Tab.Peca(pos).ExisteMovimentosPossiveis())
+            {
+                throw new TabuleiroException("Não há movimentos possíveis para a peça escolhida!");
+            }
+        }
+
+        public void ValidarPosicaoDestino(Posicao origem, Posicao destino)
+        {
+            if (!Tab.Peca(origem).PodeMoverPara(destino))
+            {
+                throw new TabuleiroException("Posição de destino inválida!");
+            }
+        }
+
+        private void MudaJogador()
+        {
+            if (JogadorAtual == Cor.Branco)
+                JogadorAtual = Cor.Preto;
+            else
+                JogadorAtual = Cor.Branco;
         }
 
         private void ColocarPecas()
