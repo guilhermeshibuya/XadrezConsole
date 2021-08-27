@@ -220,12 +220,37 @@ namespace Xadrez
 
         private void ColocarPecas()
         {
-            ColocarNovaPeca('c', 1, new Torre(Tab, Cor.Branco));
-            ColocarNovaPeca('d', 1, new Rei(Tab, Cor.Branco));
-            ColocarNovaPeca('h', 7, new Torre(Tab, Cor.Branco));
+            ColocarNovaPeca('a', 1, new Torre(Tab, Cor.Branco));
+            ColocarNovaPeca('b', 1, new Cavalo(Tab, Cor.Branco));
+            ColocarNovaPeca('c', 1, new Bispo(Tab, Cor.Branco));
+            ColocarNovaPeca('d', 1, new Dama(Tab, Cor.Branco));
+            ColocarNovaPeca('e', 1, new Rei(Tab, Cor.Branco));
+            ColocarNovaPeca('f', 1, new Bispo(Tab, Cor.Branco));
+            ColocarNovaPeca('g', 1, new Cavalo(Tab, Cor.Branco));
+            ColocarNovaPeca('h', 1, new Torre(Tab, Cor.Branco));
+            
+            char col = 'a';
+            for (int i = 0; i < Tab.Colunas; i++)
+            {
+                ColocarNovaPeca(col, 2, new Peao(Tab, Cor.Branco));
+                col++;
+            }
 
-            ColocarNovaPeca('a', 8, new Rei(Tab, Cor.Preto));
-            ColocarNovaPeca('b', 8, new Torre(Tab, Cor.Preto));
+            ColocarNovaPeca('a', 8, new Torre(Tab, Cor.Preto));
+            ColocarNovaPeca('b', 8, new Cavalo(Tab, Cor.Preto));
+            ColocarNovaPeca('c', 8, new Bispo(Tab, Cor.Preto));
+            ColocarNovaPeca('d', 8, new Dama(Tab, Cor.Preto));
+            ColocarNovaPeca('e', 8, new Rei(Tab, Cor.Preto));
+            ColocarNovaPeca('f', 8, new Bispo(Tab, Cor.Preto));
+            ColocarNovaPeca('g', 8, new Cavalo(Tab, Cor.Preto));
+            ColocarNovaPeca('h', 8, new Torre(Tab, Cor.Preto));
+
+            col = 'a';
+            for (int i = 0; i < Tab.Colunas; i++)
+            {
+                ColocarNovaPeca(col, 7, new Peao(Tab, Cor.Preto));
+                col++;
+            }
         }
     }
 }
